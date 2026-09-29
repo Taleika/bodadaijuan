@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFF3E5">
+  <meta name="description" content="Dai y Juan se casan el 20 de noviembre de 2026. Te invitamos a celebrar con nosotros.">
+  <meta property="og:title" content="Dai & Juan · Nos casamos">
+  <meta property="og:description" content="19 años de historia, dos hijos, una familia y un amor que merece ser celebrado.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://taleika.github.io/bodadaijuan/images/hero.jpg">
+  <meta property="og:url" content="https://taleika.github.io/bodadaijuan/">
+  <title>Dai & Juan · Nos casamos</title>
+  <link rel="icon" type="image/png" href="images/logo-dj.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="before-open">
+  <div id="entry" class="entry" aria-label="Portada de la invitación">
+    <div class="entry-heading">
+      <p class="eyebrow">20 de noviembre de 2026</p>
+      <h1>Dai &amp; Juan</h1>
+      <p>Una invitación para vos</p>
+    </div>
+    <div class="envelope" aria-hidden="true">
+      <div class="envelope-back"></div>
+      <div class="letter"><span>Nos casamos</span><small>20 · XI · 2026</small></div>
+      <div class="envelope-front"></div>
+      <div class="envelope-side envelope-side-left"></div>
+      <div class="envelope-side envelope-side-right"></div>
+      <div class="envelope-flap"></div>
+    </div>
+    <button id="open-invitation" class="seal" type="button" aria-label="Abrir la invitación">D&amp;J</button>
+    <p class="entry-hint">Tocá el sello para abrir la invitación</p>
+  </div>
+
+  <main id="invitation" class="invitation" inert>
+    <header class="masthead">
+      <div class="masthead-text">
+        <h1>Dai &amp; Juan</h1>
+        <p>Nos casamos</p>
+      </div>
+      <button id="music-toggle" class="music-toggle" type="button" aria-label="Reproducir música" aria-pressed="false" hidden>
+        <span class="music-icon" aria-hidden="true">▶</span>
+      </button>
+      <audio id="music" src="images/music.mp3" preload="metadata" loop></audio>
+    </header>
+
+    <section class="hero framed-section" aria-label="Dai y Juan">
+      <div class="double-frame"><img src="images/hero.jpg" alt="Dai y Juan sonriendo al aire libre" fetchpriority="high"></div>
+    </section>
+
+    <section class="message ruled-section sand-section">
+      <div class="section-inner">
+        <p class="eyebrow">Diecinueve años juntos</p>
+        <h2>Queridos invitados</h2>
+        <p class="invitation-text">19 años de historia, dos hijos, una familia y un amor que merece ser celebrado. ¡Nos casamos y queremos compartirlo con ustedes!</p>
+      </div>
+    </section>
+
+    <section class="countdown ruled-section ivory-section" aria-labelledby="countdown-title">
+      <div class="section-inner">
+        <p class="eyebrow">Agendá la fecha</p>
+        <h2 id="countdown-title">20 de noviembre</h2>
+        <div class="countdown-grid" role="timer" aria-label="Tiempo restante hasta la boda">
+          <div><strong id="days">--</strong><span>Días</span></div>
+          <div><strong id="hours">--</strong><span>Horas</span></div>
+          <div><strong id="minutes">--</strong><span>Minutos</span></div>
+          <div><strong id="seconds">--</strong><span>Segundos</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="venue ruled-section sage-section" aria-labelledby="venue-title">
+      <div class="section-inner">
+        <p class="eyebrow">Nos encontramos</p>
+        <h2 id="venue-title">Salón La Rural</h2>
+        <p class="event-date">Viernes 20 de noviembre · 17:00 hs</p>
+        <p class="venue-address">J. C. Dellatorre 3250, Saladillo</p>
+        <a class="button button-outline" href="https://www.google.com/maps/search/?api=1&amp;query=Sociedad+Rural+de+Saladillo+J+C+Dellatorre+3250" target="_blank" rel="noopener noreferrer">Cómo llegar <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="photo-section ivory-section framed-section" aria-label="Nuestra familia">
+      <div class="double-frame"><img src="images/Foto2.jpg" alt="Dai, Juan y sus dos hijos, retrato familiar en blanco y negro" loading="lazy"></div>
+    </section>
+    <section class="photo-section sand-section framed-section" aria-label="Otro momento en familia">
+      <div class="double-frame"><img src="images/Foto3.jpg" alt="Dai, Juan y sus dos hijos reunidos en casa" loading="lazy"></div>
+    </section>
+
+    <section class="rsvp ruled-section ivory-section" aria-labelledby="rsvp-title">
+      <div class="section-inner">
+        <p class="eyebrow">Los esperamos</p>
+        <h2 id="rsvp-title">Confirmá tu asistencia</h2>
+        <a class="button button-filled" href="https://forms.gle/joXvwws1K1wsXxJGA" target="_blank" rel="noopener noreferrer">Confirmar asistencia <span aria-hidden="true">↗</span></a>
+        <p class="deadline">Hasta el 10 de noviembre de 2026</p>
+      </div>
+    </section>
+
+    <section class="gifts ruled-section sage-section" aria-labelledby="gifts-title">
+      <div class="section-inner">
+        <h2 id="gifts-title">Regalos</h2>
+        <p>Buzón en el salón</p>
+        <p>Alias: <strong>bodadaijuan</strong></p>
+      </div>
+    </section>
+    <footer>Dai &amp; Juan · 20.11.2026</footer>
+  </main>
+</body>
+</html>
