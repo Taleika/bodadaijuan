@@ -29,7 +29,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--olive); outline
 .envelope { width: min(82vw, 340px); aspect-ratio: 340 / 250; margin-top: clamp(48px, 10vh, 105px); position: relative; perspective: 900px; filter: drop-shadow(0 14px 18px rgba(78, 84, 24, .18)); }
 .envelope-back, .envelope-front, .envelope-side, .envelope-flap { position: absolute; left: 0; width: 100%; }
 .envelope-back { top: 14%; height: 82%; background: var(--sage); }
-.letter { position: absolute; left: 9%; top: 8%; width: 82%; height: 74%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 10%; background: #fffaf1; border: 1px solid var(--line); color: var(--olive); font: 400 clamp(20px, 5vw, 27px) Baskervville, Georgia, serif; transition: transform .82s ease .22s; }
+.letter { position: absolute; z-index: 2; left: 9%; top: 8%; width: 82%; height: 74%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 10%; background: #fffaf1; border: 1px solid var(--line); color: var(--olive); font: 400 clamp(20px, 5vw, 27px) Baskervville, Georgia, serif; transition: transform .82s ease .22s; }
 .letter small { font: 600 9px Montserrat, Arial, sans-serif; letter-spacing: .17em; margin-top: 13px; }
 .envelope-front { top: 14%; height: 82%; background: var(--sand); clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%); z-index: 3; }
 .envelope-side { top: 14%; height: 82%; z-index: 4; }
@@ -56,6 +56,10 @@ section h2 { font: 400 clamp(33px, 8vw, 50px)/1.12 Baskervville, Georgia, serif;
 .ivory-section { background: var(--ivory); }
 .sand-section { background: var(--sand); }
 .sage-section { background: var(--sage); }
+.sage-section { color: var(--ivory); text-shadow: 0 1px 2px rgba(78, 84, 24, .25); }
+.sage-section .eyebrow { color: var(--ivory); }
+.sage-section .section-inner::before, .sage-section .section-inner::after { background: rgba(255, 243, 229, .48); }
+.sage-section .button-outline { border-color: var(--ivory); color: var(--ivory); }
 .framed-section { padding: clamp(27px, 6vw, 54px) clamp(30px, 7vw, 70px) clamp(38px, 7vw, 65px); }
 .hero { padding-top: 15px; }
 .double-frame { position: relative; padding: clamp(10px, 2vw, 15px); border: 1px solid var(--gold); margin: 0 clamp(10px, 2vw, 16px) clamp(10px, 2vw, 16px) 0; }
@@ -74,7 +78,6 @@ section h2 { font: 400 clamp(33px, 8vw, 50px)/1.12 Baskervville, Georgia, serif;
 .countdown-grid > div:last-child { border-right: 0; }
 .countdown-grid strong { display: block; font: 400 clamp(30px, 8vw, 46px)/1 Baskervville, Georgia, serif; font-variant-numeric: tabular-nums; }
 .countdown-grid span { display: block; margin-top: 8px; font-size: clamp(8px, 2.2vw, 10px); letter-spacing: .09em; text-transform: uppercase; font-weight: 600; }
-.venue .eyebrow, .gifts .eyebrow { color: var(--olive); }
 .event-date { font: 400 clamp(21px, 5vw, 29px) Baskervville, Georgia, serif; margin: 10px 0 14px; }
 .venue-address { font-size: 12px; line-height: 1.5; margin: 0; }
 .button { min-height: 45px; display: inline-flex; gap: 7px; justify-content: center; align-items: center; padding: 13px 22px; text-decoration: none; text-transform: uppercase; letter-spacing: .1em; font-size: 10px; font-weight: 600; transition: background .2s, color .2s, transform .2s; }
