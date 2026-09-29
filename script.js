@@ -31,6 +31,7 @@
 
   function updateMusicButton() {
     const playing = !audio.paused && !audio.ended;
+    if (playing) musicButton.hidden = false;
     musicButton.setAttribute('aria-pressed', String(playing));
     musicButton.setAttribute('aria-label', playing ? 'Pausar música' : 'Reproducir música');
     musicIcon.textContent = playing ? 'Ⅱ' : '▶';
@@ -40,6 +41,7 @@
   audio.addEventListener('play', updateMusicButton);
   audio.addEventListener('pause', updateMusicButton);
   audio.addEventListener('error', () => { musicButton.hidden = true; });
+  if (audio.readyState >= 1) musicButton.hidden = false;
 
   function tryPlayMusic() {
     if (audio.error) return;
