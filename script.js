@@ -57,7 +57,7 @@
       const progress = Math.max(-1, Math.min(1,
         (viewportHeight / 2 - center) / ((viewportHeight + bounds.height) / 2)
       ));
-      const travel = Math.min(16, bounds.height * 0.035);
+      const travel = Math.min(32, bounds.height * 0.07);
       image.style.setProperty('--photo-scale', String(1 + 2 * (travel + 1) / bounds.height));
       image.style.setProperty('--photo-offset', `${(progress * travel).toFixed(2)}px`);
     });
