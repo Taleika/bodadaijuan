@@ -30,10 +30,10 @@
   const musicIcon = musicButton.querySelector('.music-icon');
 
 
-  // Move each complete photo and its frame by at most 6px, without cropping.
-  const photoFrames = [...invitation.querySelectorAll('.double-frame')].map(frame => ({
-    frame,
-    section: frame.closest('section')
+  // Keep frames fixed and move photos behind them by at most 6px.
+  const photoFrames = [...invitation.querySelectorAll('.photo-window')].map(viewport => ({
+    viewport,
+    image: viewport.querySelector('img')
   }));
   const photoMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
   let photoParallaxRequest = 0;
@@ -41,19 +41,24 @@
   function updatePhotoParallax() {
     photoParallaxRequest = 0;
     if (photoMotionPreference.matches) {
-      photoFrames.forEach(({ frame }) => frame.style.removeProperty('transform'));
+      photoFrames.forEach(({ image }) => {
+        image.style.removeProperty('--photo-offset');
+        image.style.removeProperty('--photo-scale');
+      });
       return;
     }
     if (invitation.inert) return;
     const viewportHeight = window.innerHeight;
-    photoFrames.forEach(({ frame, section }) => {
-      // Measure the unmoving section so translation never feeds back into itself.
-      const bounds = section.getBoundingClientRect();
+    photoFrames.forEach(({ viewport, image }) => {
+      // Measure the fixed window; a 7px margin covers the 6px movement.
+      const bounds = viewport.getBoundingClientRect();
+      if (!bounds.height) return;
       const center = bounds.top + bounds.height / 2;
       const progress = Math.max(-1, Math.min(1,
         (viewportHeight / 2 - center) / ((viewportHeight + bounds.height) / 2)
       ));
-      frame.style.transform = `translateY(${(progress * 6).toFixed(2)}px)`;
+      image.style.setProperty('--photo-scale', String(1 + 14 / bounds.height));
+      image.style.setProperty('--photo-offset', `${(progress * 6).toFixed(2)}px`);
     });
   }
 

@@ -64,6 +64,9 @@ section h2 { font: 400 clamp(33px, 8vw, 50px)/1.12 Baskervville, Georgia, serif;
 .hero { padding-top: 15px; }
 .double-frame { position: relative; padding: clamp(10px, 2vw, 15px); border: 1px solid var(--gold); margin: 0 clamp(10px, 2vw, 16px) clamp(10px, 2vw, 16px) 0; }
 .double-frame::after { content: ''; position: absolute; top: 22px; left: 22px; right: -18px; bottom: -18px; border: 1px solid var(--line); pointer-events: none; }
+.photo-window { position: relative; z-index: 1; overflow: hidden; aspect-ratio: 1; }
+.photo-window img { transform: translateY(var(--photo-offset, 0px)) scale(var(--photo-scale, 1)); }
+@media (prefers-reduced-motion: reduce) { .photo-window img { transform: none; } }
 .double-frame img { display: block; position: relative; z-index: 1; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
 .ruled-section { text-align: center; }
 .section-inner { max-width: 640px; margin: 0 auto; padding: clamp(47px, 7vw, 70px) clamp(31px, 7vw, 70px); position: relative; }
