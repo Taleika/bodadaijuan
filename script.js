@@ -29,6 +29,45 @@
   const musicButton = document.getElementById('music-toggle');
   const musicIcon = musicButton.querySelector('.music-icon');
 
+
+  // Move each complete photo and its frame by at most 6px, without cropping.
+  const photoFrames = [...invitation.querySelectorAll('.double-frame')].map(frame => ({
+    frame,
+    section: frame.closest('section')
+  }));
+  const photoMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let photoParallaxRequest = 0;
+
+  function updatePhotoParallax() {
+    photoParallaxRequest = 0;
+    if (photoMotionPreference.matches) {
+      photoFrames.forEach(({ frame }) => frame.style.removeProperty('transform'));
+      return;
+    }
+    if (invitation.inert) return;
+    const viewportHeight = window.innerHeight;
+    photoFrames.forEach(({ frame, section }) => {
+      // Measure the unmoving section so translation never feeds back into itself.
+      const bounds = section.getBoundingClientRect();
+      const center = bounds.top + bounds.height / 2;
+      const progress = Math.max(-1, Math.min(1,
+        (viewportHeight / 2 - center) / ((viewportHeight + bounds.height) / 2)
+      ));
+      frame.style.transform = `translateY(${(progress * 6).toFixed(2)}px)`;
+    });
+  }
+
+  function schedulePhotoParallax() {
+    if (!photoParallaxRequest) {
+      photoParallaxRequest = window.requestAnimationFrame(updatePhotoParallax);
+    }
+  }
+
+  window.addEventListener('scroll', schedulePhotoParallax, { passive: true });
+  window.addEventListener('resize', schedulePhotoParallax);
+  window.addEventListener('load', schedulePhotoParallax);
+  photoMotionPreference.addEventListener('change', schedulePhotoParallax);
+
   function updateMusicButton() {
     const playing = !audio.paused && !audio.ended;
     if (playing) musicButton.hidden = false;
@@ -66,6 +105,7 @@
     window.setTimeout(() => {
       invitation.inert = false;
       document.body.classList.remove('before-open');
+      schedulePhotoParallax();
       entry.classList.add('is-fading');
       window.scrollTo(0, 0);
       window.setTimeout(() => {
