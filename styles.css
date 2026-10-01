@@ -93,6 +93,19 @@ section h2 { font: 400 clamp(33px, 8vw, 50px)/1.12 Baskervville, Georgia, serif;
 .gifts p { font-size: 13px; margin: 7px 0; }
 .gifts strong { font-weight: 600; }
 footer { background: var(--ivory); color: var(--gold); padding: 23px; text-align: center; font: 400 17px Baskervville, Georgia, serif; }
+/* Approved green palette and alternating section colors. */
+.invitation {
+  --sage: #91a08e;
+  --gold: #8b9163;
+  --sand: #c5c9b0;
+  --line: rgba(139, 145, 99, .48);
+}
+.hero, .countdown, .photo-section { background: var(--sand); }
+.message, .venue { background: var(--ivory); }
+.venue { color: var(--olive); text-shadow: 0 1px 2px rgba(78, 84, 24, 0); }
+.venue .eyebrow { color: var(--olive); }
+.venue .section-inner::before, .venue .section-inner::after { background: var(--line); }
+.venue .button-outline { border-color: var(--gold); color: var(--olive); }
 @media (max-width: 420px) {
   .entry { padding-top: 9vh; }
   .entry-hint { margin-top: 70px; }
